@@ -8,6 +8,15 @@
 
 ParkPilot is a **teaching simulation**, not a service with live parking availability. It shows three genuine algorithms from different AI Fundamentals topics. **Each Run button calls a different Python endpoint**, so the methods can be demonstrated individually.
 
+## Final submission: presentation and video
+
+- **[Final presentation — 7 slides (read directly on GitHub)](docs/Presentation.md)**
+- **[ParkPilot demo video — 2 minutes 30 seconds on HeyGen](https://app.heygen.com/videos/parkpilot-ai-2-min-30-sec-demo-serikzhan-beisembek-624248bcc9d73cab7e912a1a5440023a)**
+- **[Video details and viewing instructions](docs/VIDEO_DEMO.md)**
+- **[Full project ZIP with the PowerPoint, code, tests and documents](ParkPilot_Verified_v5_1%20(1).zip)**
+
+*Video is hosted by HeyGen, so its viewing permissions are managed there. The PowerPoint file is included inside the ZIP at `Mini_Smart_Parking_Guide/docs/Presentation.pptx`. The GitHub-friendly 7-slide text presentation is linked above.*
+
 ## How to open the website
 
 **Windows:** Extract the ZIP. Open `Mini_Smart_Parking_Guide`, then double-click **`run_windows.bat`**. Keep the command-prompt window open. A browser should open automatically; otherwise use **http://127.0.0.1:8765/**. If you see `ERR_CONNECTION_REFUSED`, the Python server is not running.
