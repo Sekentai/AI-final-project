@@ -1,0 +1,41 @@
+name: Publish PowerPoint presentation
+on:
+  push:
+    paths:
+      - '.github/workflows/publish-pptx.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  extract-pptx:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Extract original PowerPoint from project archive
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from zipfile import ZipFile
+          archives = list(Path('.').glob('ParkPilot_Verified_v5_1*.zip'))
+          if not archives:
+              raise FileNotFoundError('Expected ParkPilot_Verified_v5_1 ZIP archive missing')
+          with ZipFile(archives[0]) as z:
+              matches = [name for name in z.namelist() if name.endswith('/docs/Presentation.pptx')]
+              if not matches:
+                  raise FileNotFoundError('Presentation.pptx not found in ZIP')
+              pptx = z.read(matches[0])
+          assert pptx.startswith(b'PK'), 'Not a valid PPTX ZIP header'
+          Path('docs').mkdir(exist_ok=True)
+          Path('docs/Presentation.pptx').write_bytes(pptx)
+          print('Published docs/Presentation.pptx:', len(pptx), 'bytes')
+          PY
+      - name: Commit PowerPoint file
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/Presentation.pptx
+          git diff --cached --quiet || (git commit -m "Publish editable seven-slide PowerPoint presentation" && git push)
