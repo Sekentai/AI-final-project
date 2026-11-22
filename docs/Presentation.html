@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ParkPilot — AI Fundamentals Presentation</title>
+<style>
+:root{--navy:#102a37;--mint:#15a68d;--light:#eaf8f4;--muted:#647d8a;--white:#fff}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,"Segoe UI",Arial,sans-serif;background:#0a202b;color:var(--navy)}
+.slides{display:grid;place-items:center;min-height:100vh;padding:30px 70px}
+.slide{display:none;position:relative;background:#f5fafb;width:min(1120px,100%);aspect-ratio:16/9;border-radius:18px;padding:58px 64px;box-shadow:0 30px 90px #0007;overflow:auto}
+.slide.active{display:block}.slide.dark{background:#102a37;color:white}
+.eyebrow{font-size:13px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--mint)}
+.dark .eyebrow{color:#62e3cd}
+h1{font-size:clamp(36px,4.7vw,66px);line-height:1.07;margin:24px 0}h2{font-size:clamp(28px,3.2vw,42px);margin:16px 0 27px}
+h3{font-size:18px;margin:0 0 8px}p,li{font-size:17px;line-height:1.5;color:#405d6b}.dark p,.dark li{color:#c6e0e1}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.card{background:white;border-radius:14px;padding:20px;border:1px solid #d7e6e7}.dark .card{background:#163947;border-color:#326070}.card strong{color:#008a78}
+.feature{background:#0c3445;color:white;padding:22px 18px;border-radius:15px}.feature h3{color:#72e1ce}
+ul{padding-left:23px}.big{font-size:27px;font-weight:850;color:#08a78f}.formula{background:#113e4f;color:#fff;border-radius:10px;padding:16px 20px;font-size:20px;font-weight:650}
+.kpi{font-size:47px;font-weight:800;color:#08a78f}.small{font-size:14px;color:var(--muted)}
+.badge{display:inline-block;background:#daefe9;color:#087567;padding:8px 13px;border-radius:50px;font-size:13px;font-weight:750}
+a{color:#087d78}.dark a{color:#8ce8d6}
+.footer{position:absolute;bottom:22px;left:64px;right:64px;display:flex;justify-content:space-between;font-size:12px;color:#719098}
+.controls{display:flex;position:fixed;bottom:18px;left:50%;transform:translateX(-50%);align-items:center;gap:15px;border-radius:40px;background:#fff;padding:8px 16px;box-shadow:0 8px 30px #0004}
+.controls button{background:#103845;color:#fff;border:0;padding:9px 18px;border-radius:20px;cursor:pointer;font-size:14px}
+.controls button:hover{background:#087d78}.controls span{font-size:13px;color:#415c66;min-width:42px;text-align:center}
+.map{display:grid;grid-template-columns:repeat(5,52px);gap:6px;margin:18px 0}.cell{width:52px;height:52px;border-radius:7px;background:#48666d;color:#dcf8f1;font-size:12px;display:grid;place-items:center}.cell.wall{background:#abc5b2;color:#244b39}.cell.target{border:3px solid #ffd66a;background:#125947}.cell.start{background:#1884ac}
+.cta{display:inline-block;padding:12px 19px;background:#14a88f;color:white!important;border-radius:10px;font-weight:750;text-decoration:none}
+@media(max-width:700px){.slides{padding:14px 12px 84px}.slide{aspect-ratio:auto;min-height:75vh;padding:32px 24px}.grid,.two{grid-template-columns:1fr}.footer{position:static;margin-top:40px}.map{grid-template-columns:repeat(5,35px)}.cell{width:35px;height:35px}p,li{font-size:15px}}
+</style>
+</head>
+<body><main class="slides">
+<section class="slide dark active">
+<div class="eyebrow">AI Fundamentals · Final Project · 2026–2027</div>
+<h1>PARKPILOT<br>Smart Parking Guide</h1>
+<p style="font-size:24px;max-width:780px">An explainable AI parking simulation using three real algorithms.</p>
+<div class="grid" style="margin-top:40px"><div class="feature"><h3>01 · BFS</h3>Shortest route</div><div class="feature"><h3>02 · BAYES</h3>Sensor uncertainty</div><div class="feature"><h3>03 · MDP</h3>Drive or recheck</div></div>
+<p style="margin-top:35px">Serikzhan Beisembek · <a href="https://app.heygen.com/videos/parkpilot-ai-2-min-30-sec-demo-serikzhan-beisembek-624248bcc9d73cab7e912a1a5440023a" target="_blank" rel="noopener">Watch the 2:30 demo ↗</a></p>
+<div class="footer"><span>Educational simulation · 3 maps</span><span>01 / 07</span></div>
+</section>
+<section class="slide">
+<div class="eyebrow">01 / Problem</div><h2>One parking problem. Three kinds of intelligence.</h2>
+<div class="grid"><div class="card"><h3>PROBLEM</h3><p>Roads may be blocked and sensors may report an occupied space as free.</p></div><div class="card"><h3>GOAL</h3><p>Help a driver choose a reachable parking place under uncertainty.</p></div><div class="card"><h3>SCOPE</h3><p>3 simulated parking lots, each with a 5×5 map and 3 candidate spaces.</p></div></div>
+<div class="grid" style="margin-top:20px"><div class="feature"><h3>① BFS</h3>Find the route</div><div class="feature"><h3>② BAYES</h3>Estimate occupancy</div><div class="feature"><h3>③ MDP</h3>Choose an action</div></div>
+<div class="footer"><span>ParkPilot · AI Fundamentals</span><span>02 / 07</span></div>
+</section>
+<section class="slide">
+<div class="eyebrow">02 / Search</div><h2>BFS — shortest route</h2>
+<div class="two"><div><div class="map">
+<div class="cell target">A</div><div class="cell">·</div><div class="cell">·</div><div class="cell">·</div><div class="cell">B</div>
+<div class="cell">↑</div><div class="cell wall">×</div><div class="cell">·</div><div class="cell">·</div><div class="cell">·</div>
+<div class="cell">↑</div><div class="cell wall">×</div><div class="cell">·</div><div class="cell">·</div><div class="cell">·</div>
+<div class="cell">↑</div><div class="cell">·</div><div class="cell">·</div><div class="cell wall">×</div><div class="cell">C</div>
+<div class="cell start">CAR</div><div class="cell">·</div><div class="cell">·</div><div class="cell">·</div><div class="cell">·</div></div><p class="small">Mall example · Green space A · Blue car start · × obstacles</p></div>
+<div><div class="card"><h3>Input → Process → Output</h3><ul><li>Input: entrance, target, walls</li><li>Use a FIFO queue to explore nearest cells first</li><li>Backtrack to reconstruct the route</li></ul><div class="kpi">4 steps</div><p>Shortest Mall route from entrance to Space A</p></div></div></div>
+<div class="footer"><span>All moves have equal cost, so BFS returns a shortest path</span><span>03 / 07</span></div>
+</section>
+<section class="slide">
+<div class="eyebrow">03 / Probability</div><h2>Bayes — update uncertain sensor readings</h2>
+<div class="two"><div class="card"><h3>Space A • Mall</h3><p>Prior occupied:</p><div class="kpi">25.0%</div><p>Sensor reads <strong>CLEAR</strong>:</p><div class="kpi">5.3%</div><p>After changing sensor to <strong>ALERT</strong>:</p><div class="kpi">73.9%</div></div>
+<div><div class="card"><h3>How it works</h3><p>Sensor sensitivity = 85%<br>Sensor specificity = 90%</p><div class="formula">posterior = likelihood × prior ÷ evidence</div><p>Bayes uses an imperfect sensor's signal to revise the current probability.</p></div></div></div>
+<div class="footer"><span>These probabilities are teaching assumptions, not real sensor readings</span><span>04 / 07</span></div>
+</section>
+<section class="slide">
+<div class="eyebrow">04 / Decision making</div><h2>MDP — DRIVE or RECHECK?</h2>
+<p>Two states: <strong>FREE</strong> and <strong>OCCUPIED</strong>. Two actions: <strong>DRIVE</strong> and <strong>RECHECK</strong>.</p>
+<div class="formula">Q(s,a) = R(s,a) + γ Σ P(s'|s,a) V(s') &nbsp; · &nbsp; γ = 0.60</div>
+<div class="two" style="margin-top:18px"><div class="card"><h3>DRIVE</h3><p>Go now. Reward is high if the bay is free, but low if it is occupied.</p></div><div class="card"><h3>RECHECK</h3><p>Spend a little time getting more information before going.</p></div></div>
+<p style="margin-top:20px"><strong>Decision:</strong> compare belief-weighted expected scores and select the greater value.</p>
+<div class="footer"><span>One-step MDP · hypothetical rewards, transitions and future values</span><span>05 / 07</span></div>
+</section>
+<section class="slide">
+<div class="eyebrow">05 / Live demonstration</div><h2>3 parking maps · 25 passing tests</h2>
+<div class="grid"><div class="card"><h3>MALL</h3><p>Entrance: (4,0)</p><p>Planted traffic islands</p></div><div class="card"><h3>CAMPUS</h3><p>Entrance: (4,4)</p><p>Closed central walkways</p></div><div class="card"><h3>STADIUM</h3><p>Entrance: (4,2)</p><p>Event-day obstacles</p></div></div>
+<div class="two" style="margin-top:22px"><div class="card"><h3>Live demo sequence</h3><ol><li>Choose a map and Space A</li><li>Click BFS; play car animation</li><li>Click Bayes; change the signal</li><li>Click MDP; compare the decision</li></ol></div><div class="card"><div class="kpi">25/25</div><p>Unit tests passed in the project environment</p><span class="badge">All 9 map/space routes reachable</span></div></div>
+<div class="footer"><span>Independent Python endpoints: /api/bfs, /api/bayes, /api/mdp</span><span>06 / 07</span></div>
+</section>
+<section class="slide">
+<div class="eyebrow">06 / Conclusion</div><h2>Practical AI through one understandable simulation</h2>
+<div class="two"><div class="card"><h3>WHAT WORKS</h3><ul><li>BFS routes around obstacles</li><li>Bayes responds to noisy sensor signals</li><li>MDP compares expected outcomes</li><li>The interface explains calculations</li></ul></div><div class="card"><h3>LIMITATIONS & NEXT STEPS</h3><ul><li>Simulated 5×5 maps</li><li>No real-time parking data</li><li>Hypothetical probabilities and rewards</li><li>Next: real sensors and larger maps</li></ul></div></div>
+<div style="margin-top:25px;display:flex;gap:16px;align-items:center"><a class="cta" href="https://app.heygen.com/videos/parkpilot-ai-2-min-30-sec-demo-serikzhan-beisembek-624248bcc9d73cab7e912a1a5440023a" target="_blank" rel="noopener">▶ Watch the 2:30 demo</a><a href="https://github.com/Sekentai/AI-final-project" target="_blank" rel="noopener">Source code / documentation ↗</a></div>
+<div class="footer"><span>Thank you! Questions?</span><span>07 / 07</span></div>
+</section>
+</main>
+<nav class="controls" aria-label="Slide controls"><button id="prev" aria-label="Previous slide">◀ Back</button><span id="count">1 / 7</span><button id="next" aria-label="Next slide">Next ▶</button></nav>
+<script>
+const s=[...document.querySelectorAll('.slide')],n=s.length;let i=0;
+function show(x){i=(x+n)%n;s.forEach((p,j)=>p.classList.toggle('active',j===i));document.getElementById('count').textContent=(i+1)+' / '+n;history.replaceState(null,'','#slide-'+(i+1))}
+document.getElementById('prev').onclick=()=>show(i-1);document.getElementById('next').onclick=()=>show(i+1);
+window.addEventListener('keydown',e=>{if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();show(i+1)}else if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();show(i-1)}});
+const m=location.hash.match(/slide-(\d+)/);if(m)show(Math.max(0,Math.min(n-1,parseInt(m[1])-1)));
+</script></body></html>
