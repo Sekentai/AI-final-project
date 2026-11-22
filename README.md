@@ -10,13 +10,13 @@ ParkPilot is a **teaching simulation**, not a service with live parking availabi
 
 ## Final submission: presentation and video
 
-- **[Final presentation — 7 slides (read directly on GitHub)](docs/Presentation.md)**
-- **[Interactive 7-slide HTML presentation](docs/Presentation.html)** — download the HTML file and open it in a browser to use arrow-key navigation.
+- **[Final PowerPoint presentation — 7 slides (.pptx)](docs/Presentation.pptx)** — download and open in PowerPoint or Google Slides.
+- **[Slide-by-slide notes (text)](docs/Presentation.md)** — optional reading version.
 - **[ParkPilot demo video — 2 minutes 30 seconds on HeyGen](https://app.heygen.com/videos/parkpilot-ai-2-min-30-sec-demo-serikzhan-beisembek-624248bcc9d73cab7e912a1a5440023a)**
 - **[Video details and viewing instructions](docs/VIDEO_DEMO.md)**
 - **[Full project ZIP with the PowerPoint, code, tests and documents](ParkPilot_Verified_v5_1%20(1).zip)**
 
-*Video is hosted by HeyGen, so its viewing permissions are managed there. The PowerPoint file is included inside the ZIP at `Mini_Smart_Parking_Guide/docs/Presentation.pptx`. The GitHub-friendly 7-slide text presentation is linked above.*
+*Video is hosted by HeyGen, so its viewing permissions are managed there. The PowerPoint presentation is directly downloadable from `docs/Presentation.pptx` and is also included in the full project ZIP.*
 
 ## How to open the website
 
