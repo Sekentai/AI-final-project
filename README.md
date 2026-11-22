@@ -11,6 +11,7 @@ ParkPilot is a **teaching simulation**, not a service with live parking availabi
 ## Final submission: presentation and video
 
 - **[Final presentation — 7 slides (read directly on GitHub)](docs/Presentation.md)**
+- **[Interactive 7-slide HTML presentation](docs/Presentation.html)** — download the HTML file and open it in a browser to use arrow-key navigation.
 - **[ParkPilot demo video — 2 minutes 30 seconds on HeyGen](https://app.heygen.com/videos/parkpilot-ai-2-min-30-sec-demo-serikzhan-beisembek-624248bcc9d73cab7e912a1a5440023a)**
 - **[Video details and viewing instructions](docs/VIDEO_DEMO.md)**
 - **[Full project ZIP with the PowerPoint, code, tests and documents](ParkPilot_Verified_v5_1%20(1).zip)**
