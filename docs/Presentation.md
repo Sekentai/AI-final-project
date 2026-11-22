@@ -4,7 +4,7 @@
 
 [▶ Watch the 2-minute 30-second video demo](https://app.heygen.com/videos/parkpilot-ai-2-min-30-sec-demo-serikzhan-beisembek-624248bcc9d73cab7e912a1a5440023a)
 
-> This is the **GitHub-readable version** of the 7-slide PowerPoint. The original `Presentation.pptx` is inside the [downloadable project ZIP](../ParkPilot_Verified_v5_1%20(1).zip), under `Mini_Smart_Parking_Guide/docs/`. The 7-slide deck explains the same three algorithms and maps. The current video link is also clickable in the updated PowerPoint distributed in the ChatGPT conversation.
+> This is a **GitHub-readable text outline** of the seven-slide deck. Download the actual editable [PowerPoint presentation (`Presentation.pptx`)](Presentation.pptx). The video demo is linked above.
 
 ---
 
