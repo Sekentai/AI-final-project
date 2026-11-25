@@ -31,5 +31,6 @@ jobs:
           git add docs/AI_Use_Declaration.docx
           if ! git diff --cached --quiet; then
             git commit -m "Add editable ParkPilot AI use declaration"
-            git push
+            git pull --rebase origin main
+            git push origin main
           fi
