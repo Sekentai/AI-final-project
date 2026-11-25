@@ -10,7 +10,7 @@ ParkPilot is a **teaching simulation**, not a service with live parking availabi
 
 ## Final submission: presentation, video and AI declaration
 
-- **[AI Use Declaration — Word document](docs/AI_Use_Declaration.docx)** (editable, sign after review)
+- **[AI Use Declaration — Word document](docs/AI_Use_Declaration.docx)** (editable Word document)
 - **[AI Use Declaration — readable version](docs/AI_Use_Declaration.md)**
 
 
