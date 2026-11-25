@@ -8,7 +8,12 @@
 
 ParkPilot is a **teaching simulation**, not a service with live parking availability. It shows three genuine algorithms from different AI Fundamentals topics. **Each Run button calls a different Python endpoint**, so the methods can be demonstrated individually.
 
-## Final submission: presentation and video
+## Final submission: presentation, video and AI declaration
+
+- **[AI Use Declaration — Word document](docs/AI_Use_Declaration.docx)** (editable, sign after review)
+- **[AI Use Declaration — readable version](docs/AI_Use_Declaration.md)**
+
+
 
 - **[Final PowerPoint presentation — 7 slides (.pptx)](docs/Presentation.pptx)** — download and open in PowerPoint or Google Slides.
 - **[Slide-by-slide notes (text)](docs/Presentation.md)** — optional reading version.
